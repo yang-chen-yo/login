@@ -1,0 +1,51 @@
+<head>
+    <link href="Frontend/css/admin-login.css" rel="stylesheet">
+</head>
+<div id="app">
+    <div class="login">
+        <div class="avatar">
+            <img src="Frontend/imgs/avatar.png">
+        </div>
+        <h2>後端登入</h2>
+        <br>
+        <div class="loginBody">
+            <div class="textbox">
+                <input type="text" placeholder="UserName" v-model="form.account">
+                <span class="material-symbols-outlined">
+                    account_circle
+                </span>
+            </div>
+            <div class="textbox">
+                <input type="password" placeholder="Password" v-model="form.password">
+                <span class="material-symbols-outlined">
+                    lock
+                </span>
+            </div>
+            <button type="submit" v-on:click="save()">LOGIN</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const { createApp } = Vue
+    createApp({
+        data: () => ({
+            form: {
+                account: '',
+                password: ''
+            }
+        }),
+        methods: {
+            async save() {
+                await axios.post(`api.php?route=post/admin-login`, this.form)
+                    .then((response) => {
+                        document.location.href = "admin-dashboard.php"
+                    })
+                    .catch((error) => {
+                        alert(error.response.data.message)
+                    })
+            }
+        }
+    }).mount('#app')
+
+</script>
