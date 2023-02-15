@@ -21,7 +21,7 @@
                     lock
                 </span>
             </div>
-            <button type="submit" v-on:click="save()">LOGIN</button>
+            <button type="submit" v-on:click="adminLogin()">LOGIN</button>
         </div>
     </div>
 </div>
@@ -36,7 +36,7 @@
             }
         }),
         methods: {
-            async save() {
+            async adminLogin() {
                 await axios.post(`api.php?route=post/admin-login`, this.form)
                     .then((response) => {
                         document.location.href = "admin-dashboard.php"

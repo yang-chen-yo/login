@@ -7,5 +7,5 @@ class Database{
     public static $HOST = 'localhost';
     public static $NAME = 'csvt_introduction';
     public static $USER = 'csvt_introduction';
-    public static $PASS = '7lJ7eVbFxQIWbg@y';
+    public static $PASS = '3QkpbMgJAV9BzEji';
 }
